@@ -163,19 +163,12 @@ class Iseed
             foreach ($data as $row) {
                 $rowArray = array();
                 foreach ($row as $columnName => $columnValue) {
-                    if($this->skipColumnName($columnName)) continue;
                     $rowArray[$columnName] = $columnValue;
                 }
                 $dataArray[] = $rowArray;
             }
         }
         return $dataArray;
-    }
-
-    protected function skipColumnName($columnName)
-    {
-      $needle = 'sys_sts';
-      return (substr($columnName, 0, strlen($needle)) === $needle);
     }
 
     /**
