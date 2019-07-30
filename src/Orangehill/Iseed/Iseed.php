@@ -176,8 +176,14 @@ class Iseed
 
     protected function skipColumnName($columnName)
     {
-      $needle = 'sys_sts';
-      return (substr($columnName, 0, strlen($needle)) === $needle);
+      $needles = ['sys_sts', 'sys_nc'];
+      foreach($needles as $needle){
+        if (substr($columnName, 0, strlen($needle)) === $needle) {
+          return true;
+        }
+      }
+
+      return false;
     }
 
     /**

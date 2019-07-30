@@ -2108,12 +2108,16 @@ class IseedTest extends PHPUnit_Framework_TestCase
     public function testRepacksSeedData()
     {
         $data = array(
+            array('id' => '1', 'sys_sts' => 'asd', 'name' => 'one'),
+            array('id' => '2', 'sys_nc$123' => 'qwe', 'name' => 'two'),
+        );
+        $correctOutput = array(
             array('id' => '1', 'name' => 'one'),
             array('id' => '2', 'name' => 'two'),
         );
         $iseed = new Orangehill\Iseed\Iseed();
         $output = $iseed->repackSeedData($data);
-        $this->assertEquals(json_encode($data), json_encode($output));
+        $this->assertEquals(json_encode($output), json_encode($correctOutput));
     }
 
     public function testCanGenerateClassName()
